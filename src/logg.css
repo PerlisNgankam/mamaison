@@ -1,0 +1,25 @@
+.Logg{
+   text-align:center; 
+   
+}
+
+.Logg-Logo {
+   padding-left: 30px;
+   padding-right: 30px;
+
+
+}
+
+.Logg-body{
+   background-color: rgb(23, 99, 175);
+   align-content: center;
+
+}
+
+.Logg-header{
+   align-items: center;
+   font-family: Verdana;
+   font-size: 12px;
+
+}
+
