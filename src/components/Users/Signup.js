@@ -55,10 +55,10 @@ class Signup extends React.Component {
     <div id="login">
         <h3 className="text-center text-black pt-5">Formulaire de connexion</h3>
         <div class="container">
-        <div id="login-row" className="row justify-content-md-center align-items-center">    
-                <div id="login-column" className="col-md-4">
-                    <div id="login-box" className="col-md-12">
-                            <form id="login-form" className="form" action="" method="post">
+        <div id="login-row1" className="row justify-content-md-center align-items-center">    
+                <div id="login-column1" className="col-md-4">
+                    <div id="login-box1" className="col-md-12">
+                            <form id="login-form1" className="form" action="" method="post">
                                 <div className="form-group">
                                     <label for="username" className="text-info">
                                         <strong>UserLogin:</strong>

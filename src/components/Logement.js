@@ -13,32 +13,27 @@ class Logement extends React.Component{
         super(props);
         this.state={
             isFavoritelog: false,
-           total:this.props.list
+           //total:this.props.list
             
             
         }
     }
 
     handledelete = (e, id) => {
-        e.preventDefault()
-        let set ={Headers:{"Acces-Control-Allow-Origin":"*"}}
-        let imagetemp = this.state.tabimg;
-        imagetemp.splice(index, 1);
-        console.log(imagetemp)
-        this.setState({
-          tabimg: imagetemp
-        });
-        axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id, )
+    
+        
+        axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id,)
         .then(res => {
+            console.log(res)
            console.log(res.data)
-           console.log()
-
-                }) 
-      };
+            }) 
+                const recup = this.state.total.filter(item=>item.id !==id)
+                this.setState({total:recup});
+                    console.log(this.state.liste.total.length)
+                    e.preventDefault()  
+            };
       
-      cont recup = this.state.props.total.fetch(item=)
- 
-     
+           
        
     handleFavoritelog=(event) =>{
         let isfav = !this.state.isFavoriteLog
@@ -69,12 +64,12 @@ class Logement extends React.Component{
             let params = this.props.house
 
             return(
-                <div>
+                <div className= "logcontainer" >
                     {/* <img src={"https://res.cloudinary.com/dfaah1nvg/image/fetch/h_120/https://res.cloudinary.com/dfaah1nvg/image/upload/v1618567394/samples/react%20images/logo12_jpxr5p.jpg"}/> */}
                     <div>
                         <Link to={"./LoggDetail/" + params.id}> 
                         {/* l'image qu'on envoi dans notre serveur */}
-                        <img src={params.roomStateName} alt="ma srcreen" /> 
+                        <img className = "logimage" width = "200"  height = "160px" src={params.roomStateName} alt="ma srcreen" /> 
                         </Link>  
                     </div>
 
@@ -88,9 +83,9 @@ class Logement extends React.Component{
                         {this.displayfavoritelog()}
                 
                     <Link to = "./AddLogement" >
-                        <button className = "bouton" type="add" > Modifier</button>
+                        <button className = "bouton2" type="add" > Modifier</button>
                     </Link>
-                        <button className = "bouton" type="delete"   onClick={(e)=>this.handledelete(e,index,params,id)}> Supprimer</button>
+                        <button className = "bouton2" type="delete" onClick={this.handledelete}> Supprimer</button>
                 </div>
 
             ); 

@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.logementtotal{
+  display:flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+
+}
+.logimage{
+object-fit: cover;
+
+
+}
+.logcontainer{
+padding:40px;
+border:1px solid #9C9C9C;
+margin: 10px;
+height: inherit;
+}
+
+.button2{
+  margin:5px;
+}
+
+.button3{
+  margin:5px;
+  margin-top: 60px;
+  max-width: 600px;
+}

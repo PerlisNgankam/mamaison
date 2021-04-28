@@ -9,7 +9,7 @@ return(
     <div>
         
         <Link to = "./AddLogement" >
-            <button className = "bouton" type="add" > Ajouter</button>
+            <button className = "bouton3" type="add" > Ajouter</button>
         </Link>
         
     </div>

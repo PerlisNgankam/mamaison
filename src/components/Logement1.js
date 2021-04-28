@@ -19,6 +19,23 @@ class Logg extends React.Component {
 
     }
 
+    
+    // handledelete = (e, id) => {
+    
+        
+    //     axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id,)
+    //     .then(res => {
+    //         console.log(res)
+    //        console.log(res.data)
+    //         }) 
+    //             const recup = this.state.total.filter(item=>item.id !==id)
+    //             this.setState({total:recup});
+    //                 console.log(this.state.liste.total.length)
+    //                 e.preventDefault()  
+    //         };
+      
+           
+
     handlePageChange = value => {
         this.setState({
             currentPage: value
@@ -29,7 +46,8 @@ class Logg extends React.Component {
     handleSelectChange = e => {
         this.setState({
             eltPerPage: e.target.value,
-            currentPage: 1
+            currentPage: 1,
+            list:{}
         });
     };
 
@@ -70,12 +88,14 @@ class Logg extends React.Component {
                     {/* { let logements = logement
                     logement.sclice (logements.length-20, logements.length)
                      } */}
-
-                    {logement.slice(indexOfFirstLogement, indexOfLastLogement).map((params, index) =>
+                     <div className= "logementtotal">
+                     {logement.slice(indexOfFirstLogement, indexOfLastLogement).map((params, index) =>
                         <Logement house={params} key={index} isFavoritelog ={this.props.favoritesLog.findIndex(item=>item.id===params.id)!==-1}/>
                         )
-
                     }
+                     </div>
+
+                    
 
                 </div>
 
@@ -98,6 +118,7 @@ class Logg extends React.Component {
 
                     </select>
                 </div>
+                {/* <button className = "button2" type="delete" onClick={this.handledelete}> Supprimer</button> */}
             </div>
 
         );
