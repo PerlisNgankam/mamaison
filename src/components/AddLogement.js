@@ -43,15 +43,14 @@ class AddLogement extends React.Component {
     //       body: formData,
     //   };
     //enreristrement de l'image sur cloudinary
-    axios
-      .post(`https://api.cloudinary.com/v1_1/dfaah1nvg/image/upload`, formData)
+    axios.post(`https://api.cloudinary.com/v1_1/dfaah1nvg/image/upload`, formData)
       .then((res) => {
           console.log(res.data);
           let cloggtmp = this.state.Clogg;
           cloggtmp["roomStateName"] = res.data.url;
           this.addRom(cloggtmp);
           this.setState({
-            clogg: cloggtmp,
+              clogg: cloggtmp,
           });
       })
       .catch((erreur) => {
@@ -135,7 +134,7 @@ class AddLogement extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1 className="center">venez nombreux</h1>
+        <h1 className="center"> Ajouter un logement de votre choix logement</h1>
         <div className ="main">
           <div className = "main-center">
             

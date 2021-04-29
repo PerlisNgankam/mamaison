@@ -1,9 +1,8 @@
-
 //import { render } from "@testing-library/react";
 import React from "react";
 import {connect} from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 
 
@@ -19,19 +18,19 @@ class Logement extends React.Component{
         }
     }
 
-    handledelete = (e, id) => {
+    // handledelete = (e, id) => {
     
         
-        axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id,)
-        .then(res => {
-            console.log(res)
-           console.log(res.data)
-            }) 
-                const recup = this.state.total.filter(item=>item.id !==id)
-                this.setState({total:recup});
-                    console.log(this.state.liste.total.length)
-                    e.preventDefault()  
-            };
+    //     axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id,)
+    //     .then(res => {
+    //         console.log(res)
+    //        console.log(res.data)
+    //         }) 
+    //             const recup = this.state.total.filter(item=>item.id !==id)
+    //             this.setState({total:recup});
+    //                 console.log(this.state.liste.total.length)
+    //                 e.preventDefault()  
+    //         };
       
            
        
@@ -85,7 +84,7 @@ class Logement extends React.Component{
                     <Link to = "./AddLogement" >
                         <button className = "bouton2" type="add" > Modifier</button>
                     </Link>
-                        <button className = "bouton2" type="delete" onClick={this.handledelete}> Supprimer</button>
+                        <button className = "bouton2" type="delete" onClick={this.props.handlesupprime()}> Supprimer</button>
                 </div>
 
             ); 
@@ -102,4 +101,3 @@ class Logement extends React.Component{
  
 
 export default connect(mapStateToProps)(Logement);
-

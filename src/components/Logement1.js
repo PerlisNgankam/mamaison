@@ -8,131 +8,146 @@ import {connect} from "react-redux";
 import Logement from './Logement'
 import { Link } from "react-router-dom";
 
-class Logg extends React.Component {
+class Logement1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentPage: 1,
             eltPerPage: 4,
             logement: logement,
+            Clogg:{},
+            
+
+            
+          
+            
         };
 
     }
 
-    
-    // handledelete = (e, id) => {
-    
-        
-    //     axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id,)
-    //     .then(res => {
-    //         console.log(res)
-    //        console.log(res.data)
-    //         }) 
-    //             const recup = this.state.total.filter(item=>item.id !==id)
-    //             this.setState({total:recup});
-    //                 console.log(this.state.liste.total.length)
-    //                 e.preventDefault()  
-    //         };
-      
-           
-
-    handlePageChange = value => {
-        this.setState({
-            currentPage: value
-
-        });
-    };
-
-    handleSelectChange = e => {
-        this.setState({
-            eltPerPage: e.target.value,
-            currentPage: 1,
-            list:{}
-        });
-    };
-
-     componentDidMount() {
-        axios.get(`https://mamaison.arenaplaza.site/api/Room/GetRoomList`)
-            .then(res => {
-                const total = res.data.length;
-                const ListeLogement=res.data.slice(total-20,total)
-                console.log( ListeLogement)
-                this.setState({logement: ListeLogement});
-              
-            });
-    } 
-           
-    render() {
-
-        const {
-            currentPage,
-            eltPerPage,
-            logement
-        } = this.state;
-
-        var indexOfLastLogement = currentPage * eltPerPage;
-        var indexOfFirstLogement = indexOfLastLogement - eltPerPage;
-        console.log(this.props);
-
-        return (
-
-
-            <div>
-                <div>
-                {/* <img src={"https://res.cloudinary.com/lepiston/image/fetch/h_110/https://res.cloudinary.com/serpoma/image/upload/v1618565247/image_test.jpg"}/> */}
-                </div>
-
-                <div>
-                    <h1>Bienvenu sur notre site de location de logements!</h1>
-
-                    {/* { let logements = logement
-                    logement.sclice (logements.length-20, logements.length)
-                     } */}
-                     <div className= "logementtotal">
-                     {logement.slice(indexOfFirstLogement, indexOfLastLogement).map((params, index) =>
-                        <Logement house={params} key={index} isFavoritelog ={this.props.favoritesLog.findIndex(item=>item.id===params.id)!==-1}/>
-                        )
-                    }
-                     </div>
-
+     
+                handledelete = (id) => {
                     
+                    // let config= {headers:{"Access-Control-Allow-Origin":"*"}} //gerer l erreur du serveur
+                    // let Cloggtmp= this.state.Clogg
+                    // Cloggtmp.splice(index, 1)
+                    // console.log( Cloggtmp)
+                    // this.setState({Clogg: Cloggtmp});
+                    // axios.put("https://mamaison.arenaplaza.site/api/Room/UpdatedRoomModel/"+id)
+                    // console.log(id)
 
-                </div>
-
-                <div>
-                    <Pagination
-                        defaultCurrent={this.state.currentPage}
-                        defaultPageSize={this.state.eltPerPage} //default size of page
-                        pageSize={this.state.eltPerPage}
-                        onChange={this.handlePageChange}
-                        total={/*loadingOk && */logement.length > 0 && logement.length} //total number of card data available
-
-                    />
-
-                </div>
-                <div>
-                    <select value={this.state.eltPerPage} onChange={this.handleSelectChange} >
-                        <option> 4</option>
-                        <option> 5</option>
-                        <option> 6</option>
-
-                    </select>
-                </div>
-                {/* <button className = "button2" type="delete" onClick={this.handledelete}> Supprimer</button> */}
-            </div>
-
-        );
-
-
-    }
-}
-
-        const mapStateToProps = state => {
-            return {
-            favoritesLog:state.favoritesLog
+                    axios.delete("https://mamaison.arenaplaza.site/api/Room/" + id)
+                    .then(res => {
+                        console.log(res)
+                    console.log(res.data)
+                        }) 
+                            const recup = this.state.logement.filter(item=>item.id !==id)
+                            console.log(recup)
+                             this.setState({total:recup});
+                             console.log(this.state.logement)
+                            
+                            //    e.preventDefault()  
             };
-        };
+                
+           
+
+                handlePageChange = value => {
+                    this.setState({
+                        currentPage: value
+
+                    });
+                };
+
+                handleSelectChange = e => {
+                    this.setState({
+                        eltPerPage: e.target.value,
+                        currentPage: 1,
+                        
+                    });
+                };
+
+                componentDidMount() {
+                    axios.get(`https://mamaison.arenaplaza.site/api/Room/GetRoomList`)
+                        .then(res => {
+                            const total = res.data.length;
+                            const ListeLogement=res.data.slice(total-20,total)
+                            console.log( ListeLogement)
+                            this.setState({logement: ListeLogement});
+                        
+                        });
+                } 
+                    
+                render() {
+
+                    const {
+                        currentPage,
+                        eltPerPage,
+                        logement
+                    } = this.state;
+
+                    var indexOfLastLogement = currentPage * eltPerPage;
+                    var indexOfFirstLogement = indexOfLastLogement - eltPerPage;
+                    console.log(this.props);
+
+                    return (
 
 
-  export default connect(mapStateToProps)(Logg);
+                        <div>
+                            <div>
+                            {/* <img src={"https://res.cloudinary.com/lepiston/image/fetch/h_110/https://res.cloudinary.com/serpoma/image/upload/v1618565247/image_test.jpg"}/> */}
+                            </div>
 
+                            <div>
+                                <h1>Bienvenu sur notre site de location de logements!</h1>
+
+                                {/* { let logements = logement
+                                logement.sclice (logements.length-20, logements.length)
+                                } */}
+                                <div className= "logementtotal">
+                                {logement.slice(indexOfFirstLogement, indexOfLastLogement).map((params, index) =>
+                                    <Logement handlesupprime= {this.handledelete} house={params} key={index} isFavoritelog ={this.props.favoritesLog.findIndex(item=>item.id===params.id)!==-1}/>
+                                    )
+                                }
+                                </div>
+
+                                
+
+                            </div>
+
+                            <div>
+                                <Pagination
+                                    defaultCurrent={this.state.currentPage}
+                                    defaultPageSize={this.state.eltPerPage} //default size of page
+                                    pageSize={this.state.eltPerPage}
+                                    onChange={this.handlePageChange}
+                                    total={/*loadingOk && */logement.length > 0 && logement.length} //total number of card data available
+
+                                />
+                            </div>
+                            <div>
+                                <select value={this.state.eltPerPage} onChange={this.handleSelectChange} >
+                                    <option> 4</option>
+                                    <option> 5</option>
+                                    <option> 6</option>
+
+                                </select>
+                               
+                            </div>
+                        
+                            {/* <button className = "button2" type="delete" onClick={this.handledelete}> Supprimer</button> */}
+                        </div>
+
+                    );
+
+
+                }
+            }
+
+                    const mapStateToProps = state => {
+                        return {
+                        favoritesLog:state.favoritesLog
+                        };
+                    };
+
+
+            export default connect(mapStateToProps)(Logement1);

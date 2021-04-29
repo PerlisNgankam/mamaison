@@ -10,6 +10,7 @@ import Logement1 from './Logement1';
 
 
 
+
 function Main() {
 
     return (
@@ -24,7 +25,8 @@ function Main() {
                         <Logg />
                     </Route>
                     <Route path="/LoggDetail/:id" component={LoggDetail}/>
-            
+                    <Route path="/AddLogement/:id" component={AddLogement}/>
+
                     <Route path="/AddLogement">
                         <AddLogement />
                     </Route>

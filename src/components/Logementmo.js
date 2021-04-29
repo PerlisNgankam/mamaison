@@ -17,13 +17,13 @@ class Logementmo extends React.Component{
           tabimg: [],
           cloggimageUpload: [],
           Clogg: {
-            roomName: " Appartement123456785",
-            livingRoomNumber: 1,
-            bedroomNumber: 3,
-            showerNumber: 2,
-            cookedNumber: 1,
-            rentCost: 100000,
-            roomStateName: "disponible",
+            roomName: "",
+            livingRoomNumber:"",
+            bedroomNumber: "",
+            showerNumber: "",
+            cookedNumber:"",
+            rentCost: "",
+            roomStateName: "",
             roomCategory: {},
             roomDaCreated: "2021-04-15T09:42:31.173Z",
           },
@@ -36,17 +36,18 @@ class Logementmo extends React.Component{
     componentDidMount() {
         const { match:{params} }=this.props;
         let id=params.id;
-       axios.get(`https://mamaison.arenaplaza.site/api/Room/GetRoomDetail/`+id)
-          .then(res => {
-            const persons = res.data;
-            console.log(persons)
-            //in traite la reponde obtenue
-            this.setState({ tabimg:persons });
-          }).catch(erreur =>{
-              //on traite ici les erreurs eventuelles du serveur
-             alert("Serveur indisponible")
-              console.log(erreur);
-          });}
+            axios.get(`https://mamaison.arenaplaza.site/api/Room/GetRoomDetail/`+id)
+              .then(res => {
+                    const persons = res.data;
+                    console.log(persons)
+                //in traite la reponde obtenue
+                    this.setState({ Clogg:persons });
+              }).catch(erreur =>{
+                  //on traite ici les erreurs eventuelles du serveur
+                alert("Serveur indisponible")
+                  console.log(erreur);
+              });
+            }
     handleFavoritelog=(event) =>{
         let isfav = !this.state.isFavoriteLog
             this.setState({
@@ -91,7 +92,25 @@ class Logementmo extends React.Component{
         e.preventDefault();
     
         console.log(this.state.Clogg);
-      };
+       /*  updateRoom(Clogg) {
+          console.log(id)
+    
+        axios.put(`https://mamaison.arenaplaza.site/api/Room/UpdatedRoomModel/`, {id})
+        .then(res => {
+          console.log(res)
+          console.log(res.data);
+          //On traite la reponse obtenue
+          
+        }).catch(erreur => {
+          //On traite ici les erreurs éventuellement survenues
+  
+          console.log(erreur);
+        }) 
+        
+     } */
+  
+      }
+    
     
       handleChange = (e) => {
           let Cloggtmp = this.state.Clogg;
@@ -128,7 +147,7 @@ class Logementmo extends React.Component{
           tabimg: imagetemp,
         });
       };
-    
+    /* 
       componentDidMount() {
         axios
           .get(`https://mamaison.arenaplaza.site/api/Room/GetRoomList`)
@@ -155,10 +174,10 @@ class Logementmo extends React.Component{
         //On traite ici les erreurs éventuellement survenues
 
         console.log(erreur);
-      })
+      }) */
       
   
-}
+
       render() {
         return (
           <div className="container">
